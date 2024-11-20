@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+    <title>ChiRus Smart Mine | Research</title>
+    <meta name="viewport" content="width=100%, initial-scale=1, maximum-scale=1">
+  
+    <!-- theme meta -->
+    <meta name="theme-name" content="ChiRus Smart Mine" />
+    <meta name="author" content="Azmat Ullah">
+    <meta name="description" content="Elevate your projects with ChinRus SmartMine, our innovative AI solution tailored for the coal mining sector. Enjoy effortless integration, exceptional efficiency, and reliable performance.">
+
+    <!-- ** CSS Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- themefy-icon -->
+    <link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
+    <!--Favicon-->
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for additional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link href="{% static 'assets/style.css' %}" rel="stylesheet" media="screen" />
+
+    <!-- JavaScript for handling click events -->
+    <script>
+        function highlightNav(contentId) {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.style.color = '#00796B'; // 清除字体颜色
+            });
+            const activeLink = document.querySelector(`a[onclick="displayContent('${contentId}')"]`);
+            if (activeLink) {
+                activeLink.style.fontWeight = 'bold'; // 设置字体加粗
+                activeLink.style.color = '#FF6F61'; // 设置字体颜色
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link, nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(nav => nav.classList.remove('active-link'));
+                    this.classList.add('active-link');
+                    this.style.fontWeight = 'bold';
+                    this.style.color = '#FF6F61';
+                });
+            });
+    
+            // 预加载背景图片以加快加载速度
+            const img = new Image();
+            img.src = '/static/images/banner.jpg';
+            img.onload = function() {
+                document.body.style.background = "url('/static/images/banner.jpg') no-repeat center center fixed";
+                document.body.style.backgroundSize = "cover";
+            };
+        });
+    
+        function displayContent(contentId) {
+            const contentBlock = document.getElementById('dynamic-content');
+            const contentElement = document.getElementById(contentId);
+            if (contentElement) {
+                // 获取内容并设置自适应高度
+                contentBlock.innerHTML = `<div style="text-align: center; color: white;">${contentElement.innerHTML}</div>`;
+                contentBlock.style.height = `${contentElement.scrollHeight}px`; // 设置内容块高度自适应内容
+                document.getElementById('dynamic-content').setAttribute('data-has-clicked', 'true');
+            }
+            highlightNav(contentId);
+        }
+        </script>
+</head>
+
+<body style="background: url('/static/images/banner.jpg') no-repeat center center fixed; background-size: cover;">
+    <!-- Header Section (Remains Visible) -->
+    <header class="shadow-bottom sticky-top" style="background-color: transparent;">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0, 0, 0, 0.25); justify-content: flex-start !important; margin-left: 0;">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="{% url 'index_en' %}" style="font-family: 'Montserrat', sans-serif; text-decoration: none;">
+                    <img src="{% static 'images/crsm.png' %}" style="width: auto; height: auto;">
+                    <span style="font-weight: bold; color: #00796B; font-size: 1.5em; text-transform: uppercase;">ChinRus</span>
+                    <span style="color: #FF6F61; font-weight: normal; font-size: 1.5em;"> smartmine</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+                        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navigation" style="justify-content: flex-start;">
+                    <ul class="navbar-nav" style="margin-left: 0;">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'index_en' %}" style="color: #00796B;margin-left: 300px;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'research_en' %}" style="color: #FF6F61;">Research</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'applications_en' %}" style="color: #00796B;">Applications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about_en' %}" style="color: #00796B;">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+    <div style="display: flex; flex-direction: row; width: 100%; height: calc(100vh - 100px); margin-top: 0;">
+        <!-- Left block for new navigation -->
+      <div style="width: 300px; background-color: rgba(255, 255, 255, 0.164); padding: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); display: flex; align-items: center;">
+        <nav>
+            <ul style="list-style: none; padding: 0; margin: auto; display: flex; flex-direction: column; justify-content: center;">
+                <li style="margin-bottom: 20px; font-size: 1.5em;">
+                    <a href="#" onclick="displayContent('visualization-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Visualization control platform</a>
+                </li>
+                <li style="margin-bottom: 20px; font-size: 1.5em;">
+                    <a href="#" onclick="displayContent('electrical-control-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Electrical Intelligent Control System</a>
+                </li>
+                <li style="margin-bottom: 20px; font-size: 1.5em;">
+                    <a href="#" onclick="displayContent('three-machine-control-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Three-machine joint control</a>
+                </li>
+                <li style="margin-bottom: 20px; font-size: 1.5em;">
+                    <a href="#" onclick="displayContent('safety-detection-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Security monitoring</a>
+                </li>
+                <li style="margin-bottom: 20px; font-size: 1.5em;">
+                    <a href="#" onclick="displayContent('new-energy-vehicle-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">New Energy Mining Truck</a>
+                </li>
+            </ul>
+        </nav>
+     </div>
+        <!-- Right content block -->
+        <div style=" flex-grow: 1; padding: 20px; background-color: rgba(12, 12, 12, 0.718);width: calc(100% - 300px);height: auto; min-height: 100%;display: flex; flex-direction: column;">
+
+            <!-- Dynamic content section -->
+            <div id="dynamic-content" style="flex-grow: 1;transition: height 0.3s ease;overflow: auto;">
+              <h1 style="text-align: center;margin: 50px;color: bisque;">详细项目介绍</h1>
+              <h1 style="text-align: center;margin: 50px;color: bisque;">Detailed Project Description</h1>
+              <p style="text-align: center;">
+                <img src="/static/images/all.jpg" alt="" style="width: 1000px;height: auto;">
+              </p>
+            </div>
+
+            <!-- Hidden content blocks -->
+            <div id="visualization-content" style="display: none;color: white;text-align: center;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">可视化管控平台</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;"> Visualization control platform</h1>
+                <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+              The construction of a digital twin visualization management and control platform for smart mines is an intelligent management and control platform with global perception, edge computing, data-driven and intelligent decision-making. The platform integrates 
+              technologies such as the Internet of Things, cloud computing, big data and AI to achieve virtual-real mapping and real-time interaction between physical mine entities and digital mine twins. At the same time, it can perform three-dimensional visualization 
+              of production scenes, real-time monitoring of equipment performance, remote intelligent operation of production processes, and early warning of accidents such as gas over-limit and water inrush precursors. By utilizing the multi-dimensional integration of 
+              mine operation and maintenance data, deep learning, iterative optimization and autonomous decision-making, the intelligence of the entire life cycle of mine operation and maintenance services can be realized.
+            </p>
+            </div>
+              
+            <div id="electrical-control-content" style="display: none;height: auto;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">电气智能控制系统</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;"> Electrical Intelligent Control System</h1>
+                <p class="text-white mb-4" style="text-align: left; margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;height:auto;color: bisque;">
+              The mine distributed electrical intelligent control system is a system that integrates advanced information technology, communication technology and automation control technology, aiming to improve the safety, efficiency and intelligence level of coal mines. 
+              In the project, we established a mine power system model, a mine control system model and a mine monitoring system model. The mine power system model includes four main areas: the mine ground substation area, the landscape substation area, the underground 
+              substation area and the mining area substation area, which are mainly implemented through efficient interconnection through distribution lines. In the mine control system, production efficiency is improved by optimizing the mine production parameters, and 
+              the model of the mine production parameter printing adopts frequency conversion calculation, deep learning and other calculation methods to change the dynamic factors, and finally gives a real-time update method driven by big data.
+            </p>
+            </div>
+
+              
+            <div id="three-machine-control-content" style="display: none;height: auto;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">三机联合控制</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;"> Three-machine joint control</h1>
+             <p class="text-white mb-4" style="text-align: left;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;color: bisque;">
+              <h4 style=" text-align: center;margin: 50px;color: bisque;">Joint control of coal mining machine, scraper conveyor and hydraulic support</h4>
+              <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">This project mainly optimizes the action formula of the three machines to plan the linkage control model and strategy, realize the adaptive adjustment and matching of control parameters, so as to achieve the purpose of coordinated control, and finally realize the 
+              automation and unmanned operation of the comprehensive mining face.</p>
+              
+              <h4 style=" color: bisque;margin: 50px;text-align: center;">Intelligent control of speed and tension of mine belt conveyor</h4>
+              <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">Belt conveyor, also known as belt conveyor, has been widely used in modern high-yield and high-efficiency mines due to its large transportation capacity, strong transportation capacity, long transportation distance, strong adaptability and stable operation. With the 
+              development needs of coal intelligence, belt conveyor, as the key equipment of the main coal transportation system, its intelligence level directly determines the key efficiency of coal and the level of coal intelligence construction. Traditional belt conveyors mostly 
+              run at rated speed in actual production. However, in production, the conveyor is not always fully loaded. When the load of the conveyor is reduced, the conveyor always runs at rated speed, which will inevitably cause a waste of kinetic energy. Based on this, we divide 
+              this project into independent control and joint control and active control and tension control. The energy-saving technology for optimizing the startup process of the belt conveyor system is to optimize the startup sequence of multiple conveyors.</p>
+              
+              <h4 style=" color: bisque;margin: 50px;text-align: center;">Development of intelligent control system for mine hoists</h4>
+              <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">This project will use a friction floor hoist, which has the advantages of strong stability, convenient maintenance and good seismic performance. Its working principle is based on the friction between the wire rope and the friction lining wheel. During the lifting process, 
+              the wire rope is placed on the friction wheel, and the friction wheel rotates through the motor, and then the friction between the wire rope and the friction lining is used </p>
+              
+             
+            </div>
+            
+            <div id="safety-detection-content" style="display: none;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">安全监测</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;">Security monitoring</h1>
+             <p class="text-white mb-4" style="text-align: left;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;color: rgb(246, 243, 239);">
+                <h4 style=" color: bisque;margin: 50px;text-align: center;">Safety detection of electromechanical equipment</h4>
+                <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">Traditional fault detection of electromechanical equipment in mines has problems such as high labor intensity, low detection efficiency, and high risk factor. In order to avoid the above problems, we optimize this. By analyzing the common fault types and traditional detection in mines,
+                machine learning is used to identify, identify features and diagnose, and a diagnostic solution for intelligent detection in mines is proposed.
+                Taking electromechanical equipment as the receptor, the operation data of mine electromechanical equipment is collected to obtain the operation status of the equipment, and the abnormal operation data is feature extracted, and after signal processing, it becomes an effective fault signal. 
+                The trained network model is used for classification discussion to obtain the fault type of the equipment and propose a fault handling solution.</p>
+                
+              
+                <h4 style=" color: bisque;margin: 50px;text-align: center;">Multifunctional detection system and automatic fire prevention and extinguishing system</h4>
+                <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">The main contents include analysis of the internal air environment of the mine, corresponding hardware selection and control system design. The system block diagram is as follows: This design mainly uses a variety of sensors to realize environmental information collection, and PLC controls
+                the solenoid valve and motor to simulate the control output. This design adopts modular design, which has the advantage of facilitating subsequent maintenance and upgrades and fault detection for the project. The system process is that when the system is cold started, the operating status 
+                of the input and output modules is first detected. When the operating status is normal, it is initialized according to the set value, the sensor collects information, and after PLC processing, different control outputs are performed.</p>
+                
+              
+              <h4 style=" color: bisque;margin: 50px;text-align: center;">Safety detection of mine personnel behavior</h4>
+              <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">Because in the process of mine production, due to the complexity of the environment, the danger of production equipment, and the closed nature of the workplace, mines become high-risk places. In order to effectively improve the level of mine safety management and reduce the occurrence of 
+              safety accidents, this module mainly implements the following three functions: personnel positioning, personnel behavior safety detection, personnel behavior analysis, and safety warning. For the research objectives and methods of this project, I aim to develop a smart mine personnel behavior 
+              safety detection system based on CNN and OpenPose technology, which can detect the location of personnel in real time, and analyze and warn their safety behavior.
+             </p>
+
+            </div>
+            
+            <div id="new-energy-vehicle-content" style="display: none;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">新能源矿车</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;">New Energy Mining Truck</h1>
+              <p class="text-white mb-4" style="text-align: left;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+              New Energy Mine Car Project
+              The mine car is driven by electricity and is mainly used for the transportation of coal ores in the mine. It has the characteristics of energy saving and environmental protection, reduces the pollution emissions of traditional fuel mine cars, and makes outstanding contributions to green mines. 
+              It is mainly divided into several modules: perception system, prediction control system, Max of vehicle networking, and vehicle design. In this autonomous driving system, the mine car is equipped with laser radar, millimeter wave radar and camera, which can achieve path recognition and obstacle 
+              detection, ensuring that the vehicle can operate efficiently in complex mines. The whole vehicle is also equipped with autonomous driving functions, pedestrian monitoring and other functions. When the mine car is running, it can identify different paths and select the optimal path to realize 
+              operation. With the help of the signal base station, it can locate the overall position of all mine cars, making the transportation system of the entire mine safer and more efficient.
+             </p>
+            </div>
+        </div>
+    </div>
+
+	<!-- footer -->
+	
+    <footer class="py-5" style="background-color: rgba(0, 0, 0, 0.5); position: relative; width: 100%; margin-top: auto;">
+
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <!-- about -->
+                <br>
+              </div>
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <ul class="list-unstyled text-white-50">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <div class="container">
+            <div class="row">
+                <!-- Left Section: 联系我们 -->
+                <div class="col-lg-6 col-sm-12 mb-4">
+                    <br>
+                    <img src="{% static 'images/crsm.png' %}" style="width: 50% !important; height: auto !important;">
+                    <br>
+                    <h5 class="text-white">Contact Us</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li>Phone number：<span class="text-white">+7 (812) 328-9030</span></li>
+                        <li>Address：<span class="text-white">Russia, 195251, St.Petersburg, Polytechnicheskaya, 29 B</span></li>
+                        <li>Email：<span class="text-white">Kozhubaev_yun@spbstu.ru</span></li>
+                    </ul>
+                </div>
+                <!-- Right Section: 法律声明, 隐私政策, 免责声明 -->
+                <div class="col-lg-6 col-sm-12 mb-4 text-right">
+                    <ul class="list-unstyled text-white-50">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <li><a href="#" class="text-white-50">Legal Notices</a></li>
+                        <li><a href="#" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white-50">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <!-- /footer -->
+
+    <!-- ** JS Plugins Needed for the Project ** -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- match-height JS -->
+    <script src="{% static 'plugins/match-height/jquery.matchHeight-min.js' %}"></script>
+    <!-- Main Script -->
+    <script src="{% static 'assets/script.js' %}"></script>
+</body>
+</html>
