@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o=i_c7-etj5mx_sztlw-*lbtviyxmxgkxkt0gm4uwxravugg+g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['chinrussmartmine.onrender.com', 'yournamemi.thedev.id','127.0.0.1']
 
 
 # Application definition
