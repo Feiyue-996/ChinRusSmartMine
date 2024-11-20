@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-us">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+    <title>ChiRus Smart Mine | About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <!-- theme meta -->
+    <meta name="theme-name" content="ChiRus Smart Mine" />
+    <meta name="author" content="Azmat Ullah">
+    <meta name="description" content="Elevate your projects with ChinRus SmartMine, our innovative AI solution tailored for the coal mining sector. Enjoy effortless integration, exceptional efficiency, and reliable performance.">
+
+    <!-- ** CSS Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- themefy-icon -->
+    <link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
+    <!--Favicon-->
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for additional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link href="{% static 'assets/style.css' %}" rel="stylesheet" media="screen" />
+
+        <!-- JavaScript for handling click events -->
+        <script>
+          function displayContent(contentId) {
+              const contentBlock = document.getElementById('dynamic-content');
+              const contentElement = document.getElementById(contentId);
+              if (contentElement) {
+                  contentBlock.innerHTML = `<div style="text-align: center; color: white;">${contentElement.innerHTML}</div>`;
+                  document.getElementById('dynamic-content').setAttribute('data-has-clicked', 'true');
+              }
+              highlightNav(contentId);
+          }
+  
+          function highlightNav(contentId) {
+              const navLinks = document.querySelectorAll('nav ul li a');
+              navLinks.forEach(link => {
+                  link.style.backgroundColor = '';
+              });
+              const activeLink = document.querySelector(`a[onclick="displayContent('${contentId}')"]`);
+              if (activeLink) {
+                  activeLink.style.backgroundColor = '#FF6F61';
+              }
+          }
+  
+          document.addEventListener('DOMContentLoaded', () => {
+              const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+              navLinks.forEach(link => {
+                  link.addEventListener('click', function() {
+                      navLinks.forEach(nav => nav.classList.remove('active-link'));
+                      this.classList.add('active-link');
+                  });
+              });
+          });
+      </script>
+</head>
+
+<body style="background: url('/static/images/banner.jpg') no-repeat center center fixed; background-size: cover;">
+  <!-- Header Section (Remains Visible) -->
+  <header class="shadow-bottom sticky-top" style="background-color: transparent;">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0, 0, 0, 0.25); justify-content: flex-start !important; margin-left: 0;">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="{% url 'index_en' %}" style="font-family: 'Montserrat', sans-serif; text-decoration: none;">
+                <img src="{% static 'images/crsm.png' %}" style="width: auto; height: auto;">
+                <span style="font-weight: bold; color: #00796B; font-size: 1.5em; text-transform: uppercase;">ChinRus</span>
+                <span style="color: #FF6F61; font-weight: normal; font-size: 1.5em;"> smartmine</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navigation" style="justify-content: flex-start;">
+                <ul class="navbar-nav" style="margin-left: 0;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index_en' %}" style="color: #00796B;margin-left: 300px;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'research_en' %}" style="color:  #00796B;">Research</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'applications_en' %}" style="color: #00796B;">Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about_en' %}" style="color: #FF6F61;">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+  <div style="display: flex; flex-direction: row; width: 100%; height: calc(100vh - 100px); margin-top: 0;">
+      <!-- Left block for new navigation -->
+      <div style="width: 300px; background-color: rgba(255, 255, 255, 0.164); padding: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); display: flex; align-items: center;">
+          <nav>
+              <ul style="list-style: none; padding: 0; margin: auto; display: flex; flex-direction: column; justify-content: center;">
+                  <li style="margin-bottom: 20px; font-size: 1.5em;">
+                      <a href="#" onclick="displayContent('Company-Profile-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Company Profile</a>
+                  </li>
+                  <li style="margin-bottom: 20px; font-size: 1.5em;">
+                      <a href="#" onclick="displayContent('School-Introduction-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">School Introduction</a>
+                  </li>
+                  <li style="margin-bottom: 20px; font-size: 1.5em;">
+                      <a href="#" onclick="displayContent('Professors-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Professors</a>
+                  </li>
+                  <li style="margin-bottom: 20px; font-size: 1.5em;">
+                      <a href="#" onclick="displayContent('Members-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Members</a>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+
+      <!-- Right content block -->
+    <div style="flex-grow: 1; padding: 20px; background-color:rgba(12, 12, 12, 0.718); width: calc(100% - 300px); overflow-y: auto; max-height: 100%;">
+            <!-- Dynamic content section -->
+         <div id="dynamic-content" style="flex-grow: 1;transition: height 0.3s ease;overflow: auto;">
+                <h1 style="text-align: center;margin: 50px;color: bisque;">项目组介绍</h1>
+                <h1 style="text-align: center;margin: 50px;color: bisque;">Project Team Introduction</h1>
+                <p style="text-align: center;">
+                  <img src="/static/images/team.jpg" alt="" style="width: 1000px;height: auto;">
+                </p>
+         </div>
+
+          <!-- Hidden content blocks -->
+
+          <div id="Company-Profile-content" style="display: none; color: white;">
+            <img src="/static/images/logo.png" alt="">
+            <h1 style="text-align: center;margin: 50px;color: bisque;">公司介绍</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;"> Company Profile</h1>
+            <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+                Hangzhou JIE Drive Technology Co., Ltd, specialized JIE. From worm gear reducer, gear reducer, tower crane to intelligent transmission solution provider, JIE is a national high-tech enterprise, with JIE Intelligent Transmission Research Institute, national postdoctoral research station, national accredited speed reducer laboratory, Peking University JIE Intelligent Transmission Joint Laboratory, Xidian JIE Future Transmission Joint Laboratory, China Mechanical Industry Speed Reducer Engineering Research Center and Enterprise Technology Center and other innovation platforms. JIE has built an industrial alliance and realized sustainable operation through the growth planning and innovation DNA plan.
+                Intelligent JIE. From intelligent factory, intelligent products, intelligent service, intelligent experience to intelligent talents, intelligent transmission solutions such as reducer+motor+inverter+sensor+Internet of Things (IOT), and intelligent digital technologies such as execution layer+acquisition layer+driver layer+control layer+data layer, JIE is based on the overall planning of the “future factory” for lean production of the whole value chain, and the overall planning for the whole process of “future factory”. Based on the overall planning of “Future Factory” for lean production in the whole value chain and the project implementation of ecosystem, multi-system data center and integrated industrial brain, JIE realizes the intelligent manufacturing journey of an intelligent gear motor.
+                Globalized JIE brand. From Hangzhou brand, Chinese brand to world brand, JIE is based on Chinese market, exported to European and American market, and serves the global market. Through the construction of U.S. assembly plant and global marketing network, JIE is committed to localized service, face-to-face service and one-to-one service in the global market, and JIE has made good products for the global good customers!
+                JIE is a good product for global good customers! JIE people adhere to the “specialization, intelligence, globalization” development plan, committed to JIE intelligent transmission “Research Institute + Science and Technology Innovation Center + Future Factory” innovation model, to create a high ground of talent, build industrial ecology, positioning specialization, specialization and new. JIE intelligent transmission solution provider!
+            </p>
+            
+          </div>
+          
+          <div id="School-Introduction-content" style="display: none;color: white;">
+            <img src="/static/images/school.png" style="background-color: aliceblue;" alt="">
+            <h1 style="text-align: center;margin: 50px;color: bisque;">学校介绍</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;"> School-Introduction</h1>
+            <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+                Saint Petersburg Polytechnic University, also known as Peter the Great St. Petersburg Polytechnic University, is a renowned public engineering university located in Saint Petersburg. Founded on February 19, 1899, by notable figures including Dmitri Mendeleev, it has a rich history and a strong academic reputation.
+                The university is part of the 5-100 Project, aimed at enhancing the global competitiveness of Russian universities. It is led by An-Yi Lushkevich and boasts a faculty that includes 25 academicians from the Russian Academy of Sciences and the Russian Academy of Engineering. Additionally, 57 members of the Russian 
+                Academy of Engineering and the Russian Academy of Educational Sciences are affiliated with the institution.SPbPU has a distinguished list of alumni, including Nobel Prize winners such as Semyon Semenov, Pyotr Kapitsa, and Lev Landau, who have either studied or worked at the university. Other notable alumni encompass 
+                a wide range of fields, with names like Gao Jingde, Ni Weidou, Fu Hengzhi, Salatyn Murtaza, Mustafa Kemal Atatürk, Kapiça, Mikhail Botvinnik, Mikhail Ilyich Kalashnikov, Oleg Yegorov, and many others contributing to the university's legacy.
+                With a focus on excellence in education and research, Saint Petersburg Polytechnic University continues to be a leading institution in the field of engineering and technology.
+            </p>
+          </div>
+          
+          <div id="Professors-content" style="display: none; color: white;">
+            <img src="/static/images/school.png" style="background-color: aliceblue;" alt="">
+            <h1 style="text-align: center;margin: 50px;color: bisque;">教授介绍</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;"> Professor</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;">кожубаев юрий нургалиевич</h1>
+            <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+                Yu.N. Kozhubaev graduated in 2006 from the St. Petersburg State Mining Institute named after Plekhonov (Technical University) with a degree in "Electric Drive and Automation of Industrial Equipment and Technological Complexes." In 2016, he defended his Ph.D. dissertation at St. Petersburg Polytechnic University named after Peter the Great. The academic degree of Candidate of Technical Sciences in the specialty 05.09.03 "Electrotechnical Complexes and Systems" was awarded in 2017 after completing correspondence postgraduate studies at the aforementioned university. In 2018, he obtained a second higher education in the field of "Linguistics" (English, French language) at St. Petersburg Polytechnic University named after Peter the Great. In 2022, he underwent professional retraining in the program "Mathematical Modeling and Information Technologies" at the ANO DPO "Institute of Modern Education." In 2024, he underwent professional retraining in the programs: "Technosphere Safety in the profile 'Fire Safety', 'Environmental Protection and Ecological Safety', 'Labor Protection'" at the ANO DPO "Institute of Modern Education."
+
+                Yu.N. Kozhubaev has extensive practical experience working in the real sector of the national economy. He began his production activities as an electrician of the 3rd category in mining companies of the Pechora coal basin in Vorkuta, then as a general worker of dormitory No. 4 of the Mining University. After graduating from the Mining University, he gained significant practical experience working in engineering and technical positions in the industry (leading engineer for mining works, mechanic of lifting stationary equipment, mechanic of the underground section, head of industrial, fire, and environmental safety services; head of production control department, deputy chief engineer; deputy director) in industrial enterprises, coal mines, quarries for the extraction of gravel, and organizations for the construction of the metro. He worked in state civil service as a state inspector of the department of supervision over the safety of mining works of the North-West Directorate of the Federal Service for Ecological, Technological and Nuclear Supervision (Rostekhnadzor). The total work experience in the industry is 16 years.
+
+                Yu.N. Kozhubaev has been working as an associate professor since 2017 and has over 30 scientific publications, including research articles, textbooks, patents of the Russian Federation, and a certificate of the Russian Federation for state registration of a computer program. The results of his research work have been used in industrial enterprises.
+
+                He has been thanked by the Minister of Transport of the Russian Federation (Order No. 20/n of February 15, 2024). He has also been thanked by the Chairman of the Committee on Territorial Development of St. Petersburg (Order No. 18-rk of July 8, 2020).
+
+            </p>  
+          </div>
+          
+          <div id="Members-content" style="display: none; color: white;">
+            <h1 style="text-align: center;margin: 50px;color: bisque;">成员介绍</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;">Members</h1>
+            <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
+                <img src="/static/images/team.jpg" alt="">
+            </p> 
+          </div>
+          
+
+    </div>
+  </div>
+
+	<!-- footer -->
+	
+    <footer class="py-5" style="background-color: rgba(0, 0, 0, 0.5); position: relative; width: 100%; margin-top: auto;">
+
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <!-- about -->
+                <br>
+              </div>
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <ul class="list-unstyled text-white-50">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <div class="container">
+            <div class="row">
+                <!-- Left Section: 联系我们 -->
+                <div class="col-lg-6 col-sm-12 mb-4">
+                    <br>
+                    <img src="{% static 'images/crsm.png' %}" style="width: 50% !important; height: auto !important;">
+                    <br>
+                    <h5 class="text-white">Contact Us</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li>Phone number：<span class="text-white">+7 (812) 328-9030</span></li>
+                        <li>Address：<span class="text-white">Russia, 195251, St.Petersburg, Polytechnicheskaya, 29 B</span></li>
+                        <li>Email：<span class="text-white">Kozhubaev_yun@spbstu.ru</span></li>
+                    </ul>
+                </div>
+                <!-- Right Section: 法律声明, 隐私政策, 免责声明 -->
+                <div class="col-lg-6 col-sm-12 mb-4 text-right">
+                    <ul class="list-unstyled text-white-50">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <li><a href="#" class="text-white-50">Legal Notices</a></li>
+                        <li><a href="#" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white-50">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <!-- /footer -->
+
+  <!-- ** JS Plugins Needed for the Project ** -->
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+  <!-- match-height JS -->
+  <script src="{% static 'plugins/match-height/jquery.matchHeight-min.js' %}"></script>
+  <!-- Main Script -->
+  <script src="{% static 'assets/script.js' %}"></script>
+</body>
+</html>
