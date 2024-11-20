@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>ChiRus Smart Mine | HomePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <!-- theme meta -->
+    <meta name="theme-name" content="ChiRus Smart Mine" />
+    <meta name="author" content="Azmat Ullah">
+    <meta name="description" content="Elevate your projects with ChinRus SmartMine, our innovative AI solution tailored for the coal mining sector. Enjoy effortless integration, exceptional efficiency, and reliable performance.">
+
+    <!-- ** CSS Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- themefy-icon -->
+    <link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
+    <!--Favicon-->
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for additional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link href="{% static 'assets/style.css' %}" rel="stylesheet" media="screen" />
+</head>
+
+<body style="background: url('/static/images/banner.jpg') no-repeat center center fixed; background-size: cover;">
+    <!-- header -->
+    <header class="banner overlay bg-cover" >
+        <div class="navbar">
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container">
+        <a class="navbar-brand px-2 logo" href="{% url 'index_en' %}" style="font-family: 'Montserrat', sans-serif; text-decoration: none;">
+            <img src="{% static 'images/crsm.png' %}" style="width: 100% !important; height: auto !important;">
+            <span style="font-weight: bold; color: #00796B; font-size: 1.5em; text-transform: uppercase;">ChinRus</span>
+            <span style="color: #FF6F61; font-weight: normal; font-size: 1.5em;"> smartmine</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation" style="display: flex; flex-direction: row; align-items: flex-start; padding: 20px; text-align: left; top: 100px; right: 0; width: 400px; height: 100%; background-color: rgba(239, 232, 232, 0);">
+            <ul class="navbar-nav ml-auto" style="margin-right: 0% !important;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'index_en' %}" style="color: #FF6F61; margin-left: 255px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'research_en' %}" style="color: #00796B;" >Research</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applications_en' %}" style="color: #00796B;">Applications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_en' %}" style="color: #00796B;">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        <!-- banner -->
+        <div class="container section">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto" >
+                    <br><br><h1 class="text-white mb-3" style="text-align: center;">欢迎光临</h1> <br><br>
+                    <h1 class="text-white mb-3" style="text-align: center;">WELCOME TO OUR HOMEPAGE</h1><br><br>
+                    <p class="text-white mb-4" style="text-align: center;">我们项目的名字叫做智慧矿山，我们通过深度融合人工智能、自动控制、工业物联网等技术，设计出一个全面感知、实时互传、分析决策、自主学习、动态预测、协同控制的矿山智慧系统。
+                        从而实现煤炭的勘探、开采、运输、分拣、安全保障、生产管理等全过程的智能化运行。创建出一套完整的数字孪生模型，并开发一个软件平台，在不影响实际生产的情况下进行智能控制、分析和评估。
+                    </p>
+                    <br>
+                    <p class="text-white mb-4" style="text-align: center;">
+                        The name of our project is Smart Mine. By deeply integrating artificial intelligence, automatic control, industrial Internet of Things and other technologies, we have 
+                        designed an intelligent mining system with comprehensive perception, real-time transmission, analytical decision-making, autonomous learning, dynamic prediction and 
+                        collaborative control.This will enable intelligent operation of the entire process of coal exploration, mining, transportation, sorting, safety assurance, and production management.
+                        Create a complete digital twin model and develop a software platform for intelligent control, analysis and evaluation without affecting actual production.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /banner -->
+    </header>
+    <!-- /header -->
+
+ 
+
+	<!-- footer -->
+	
+    <footer class="py-5" style="background-color: rgba(0, 0, 0, 0.5); position: relative; width: 100%; margin-top: auto;">
+
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <!-- about -->
+                <br>
+              </div>
+              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                <ul class="list-unstyled text-white-50">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <div class="container">
+            <div class="row">
+                <!-- Left Section: 联系我们 -->
+                <div class="col-lg-6 col-sm-12 mb-4">
+                    <br>
+                    <img src="{% static 'images/crsm.png' %}" style="width: 50% !important; height: auto !important;">
+                    <br>
+                    <h5 class="text-white">Contact Us</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li>Phone number：<span class="text-white">+7 (812) 328-9030</span></li>
+                        <li>Address：<span class="text-white">Russia, 195251, St.Petersburg, Polytechnicheskaya, 29 B</span></li>
+                        <li>Email：<span class="text-white">Kozhubaev_yun@spbstu.ru</span></li>
+                    </ul>
+                </div>
+                <!-- Right Section: 法律声明, 隐私政策, 免责声明 -->
+                <div class="col-lg-6 col-sm-12 mb-4 text-right">
+                    <ul class="list-unstyled text-white-50">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <li><a href="#" class="text-white-50">Legal Notices</a></li>
+                        <li><a href="#" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white-50">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <!-- /footer -->
+
+    <!-- ** JS Plugins Needed for the Project ** -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- match-height JS -->
+    <script src="{% static 'plugins/match-height/jquery.matchHeight-min.js' %}"></script>
+    <!-- Main Script -->
+    <script src="{% static 'assets/script.js' %}"></script>
+</body>
+</html>
+
+
+

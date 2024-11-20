@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧矿山综合管理平台</title>
+    <link rel="stylesheet" href="/static/css/application_page1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+    <script src="/static/js/application_page1.js" defer></script>
+</head>
+<body>
+    <!-- 地图背景 -->
+    <div id="background">
+        <img src="/static/images/mining_map.png" alt="矿区地图" id="miningMap">
+    </div>
+
+    <div id="map-container">
+        <img src="/static/images/5.jpg" alt="矿山地图" id="map-image">
+    </div>
+    
+    <!-- 信息板 -->
+    <div id="infoBoards">
+        <!-- 顶部信息栏 -->
+        <div id="topInfo">
+            <h1>智慧矿山综合管理平台</h1>
+            <p id="dateTime">2023-07-29 16:41:41 | 星期六</p>
+        </div>
+
+        <!-- 左侧信息板 -->
+        <div id="leftBoards">
+            <div class="infoBox">
+                <h2>设备运行状态</h2>
+                <div class="status">
+                    <span>正常：<span class="green">185</span></span>
+                    <span>故障：<span class="red">20</span></span>
+                    <span>维修：<span class="yellow">15</span></span>
+                </div>
+            </div>
+            <div class="infoBox">
+                <h2>人员车辆信息</h2>
+                <ul>
+                    <li>值班：30人</li>
+                    <li>休息：10人</li>
+                    <li>巡车：19辆</li>
+                    <li>运输车：27辆</li>
+                    <li>挖掘机：24辆</li>
+                    <li>铲运机：20辆</li>
+                </ul>
+            </div>
+            <div class="infoBox">
+                <h2>告警列表</h2>
+                <ul>
+                    <li><span class="alert">子系统异常</span> | 2022-03 | <span class="status processing">处理中</span></li>
+                    <li><span class="alert">挖矿停机</span> | 2022-05 | <span class="status resolved">已解决</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 右侧信息板 -->
+        <div id="rightBoards">
+            <div class="chartBox">
+                <h2>出入库趋势分析</h2>
+                <canvas id="stockChart"></canvas>
+            </div>
+            <div class="chartBox">
+                <h2>能耗信息</h2>
+                <canvas id="energyChart"></canvas>
+            </div>
+            <div class="chartBox">
+                <h2>产量分析</h2>
+                <canvas id="productionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 底部工具栏 -->
+        <div id="bottomToolbar">
+            <ul>
+                <li><img src="/static/images/favicon.png" alt="矿山总览"><span>矿山总览</span></li>
+                <li><img src="/static/images/favicon.png" alt="环境监控"><span>环境监控</span></li>
+                <li><img src="/static/images/favicon.png" alt="生产分析"><span>生产分析</span></li>
+                <li><img src="/static/images/favicon.png" alt="车辆管理"><span>车辆管理</span></li>
+                <li><img src="/static/images/favicon.png" alt="仓储分析"><span>仓储分析</span></li>
+                <li><img src="/static/images/favicon.png" alt="能耗分析"><span>能耗分析</span></li>
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>
