@@ -38,6 +38,11 @@ body, html {
     transition: transform 0.2s ease; /* 动画效果 */
 }
 
+/* 鼠标悬停放大效果 */
+.zone-label:hover {
+    transform: scale(1.1); /* 放大 10% */
+}
+
 /* 图标样式 */
 .zone-label img {
     width: 40px;

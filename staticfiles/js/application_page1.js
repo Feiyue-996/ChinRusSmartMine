@@ -94,35 +94,35 @@ const mapContainer = document.getElementById('map-container');
 const zones = [
     {
         id: 'processing-zone',
-        name: '加工区',
-        top: '40%',
+        name: '管理区',
+        top: '35%',
         left: '50%',
         icon: '/static/images/favicon.png', // 图标路径
     },
     {
         id: 'storage-zone',
         name: '存储区',
-        top: '60%',
-        left: '45%',
+        top: '35%',
+        left: '25%',
         icon: '/static/images/favicon.png',
     },
     {
         id: 'exploration-zone',
-        name: '开采区',
+        name: '生活区',
         top: '30%',
-        left: '70%',
+        left: '65%',
         icon: '/static/images/favicon.png',
     },
     {
         id: 'management-zone',
-        name: '管理区',
+        name: '开采区',
         top: '20%',
-        left: '50%',
+        left: '25%',
         icon: '/static/images/favicon.png',
     },
     {
         id: 'living-zone',
-        name: '生活区',
+        name: '加工区',
         top: '50%',
         left: '25%',
         icon: '/static/images/favicon.png', // 自定义图标
@@ -158,12 +158,51 @@ zones.forEach(zone => {
 // 分区交互效果
 document.querySelectorAll('.zone-label').forEach(zone => {
     zone.addEventListener('mouseover', () => {
-        zone.style.transform = 'scale(1.1)';
+        console.log(`鼠标悬停在 ${zone.id}`); // 调试信息
+        zone.style.transform = 'scale(1.1)'; // 放大效果
     });
+
     zone.addEventListener('mouseout', () => {
-        zone.style.transform = 'scale(1)';
+        zone.style.transform = 'scale(1)'; // 恢复原始大小
     });
+
     zone.addEventListener('click', () => {
-        alert(zone.querySelector('span').innerText + ' 点击了！');
+        alert(`${zone.querySelector('span').innerText} 被点击了！`);
     });
+});
+
+
+// 动态加载人员信息
+function loadPersonnelData() {
+    console.log('Attempting to fetch /api/personnel/');
+    fetch('/api/personnel/')
+        .then(response => {
+            console.log('API Response:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Personnel Data:', data);
+            const personnelList = document.getElementById('personnelList');
+
+            // 检查 personnelList 是否存在
+            if (!personnelList) {
+                console.error('Error: Element with id "personnelList" not found');
+                return;
+            }
+
+            personnelList.innerHTML = ''; // 清空内容
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.category}: ${item.count}`;
+                personnelList.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error loading personnel data:', error));
+}
+
+
+// 页面加载时调用
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded event triggered');
+    loadPersonnelData();
 });

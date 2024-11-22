@@ -1,7 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
 
-
 class HomePageView(TemplateView):
     template_name = "en/index.html"
 
@@ -24,8 +23,5 @@ def application_page2(request):
 
 def application_page3(request):
     return render(request, 'en/applications/application_page3.html', {'current_page': 'page3'})
-
-
-
 
 
