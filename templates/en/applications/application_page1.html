@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智慧矿山综合管理平台</title>
     <link rel="stylesheet" href="/static/css/application_page1.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/static/js/application_page1.js" defer></script>
+
 </head>
 <body>
-    <!-- 地图背景 -->
+    <!-- 3D 模型背景 -->
     <div id="background">
-        <img src="/static/images/mining_map.png" alt="矿区地图" id="miningMap">
-    </div>
-
-    <div id="map-container">
-        <img src="/static/images/5.jpg" alt="矿山地图" id="map-image">
+        <canvas id="3dCanvas"></canvas>
     </div>
     
     <!-- 信息板 -->
@@ -31,29 +30,114 @@
             <div class="infoBox">
                 <h2>设备运行状态</h2>
                 <div class="status">
-                    <span>正常：<span class="green">185</span></span>
-                    <span>故障：<span class="red">20</span></span>
-                    <span>维修：<span class="yellow">15</span></span>
+                    <div class="status-item">
+                        <span class="status-label">正常</span>
+                        <span class="status-value green">185</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">故障</span>
+                        <span class="status-value red">20</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">维修</span>
+                        <span class="status-value yellow">15</span>
+                    </div>
                 </div>
             </div>
-            <div class="infoBox">
+            <div class="scroll-container">
                 <h2>人员车辆信息</h2>
-                <ul>
+                <div class="scroll-area">
+                <ul class="scroll-content">
                     <li>值班：30人</li>
                     <li>休息：10人</li>
                     <li>巡车：19辆</li>
                     <li>运输车：27辆</li>
                     <li>挖掘机：24辆</li>
                     <li>铲运机：20辆</li>
+                    <li>宽体车：24辆</li>
+                    <li>灌车：19辆</li>
+                    <li>钻机：16辆</li>
+
+                    <li>值班：30人</li>
+                    <li>休息：10人</li>
+                    <li>巡车：19辆</li>
+                    <li>运输车：27辆</li>
+                    <li>挖掘机：24辆</li>
+                    <li>铲运机：20辆</li>
+                    <li>宽体车：24辆</li>
+                    <li>灌车：19辆</li>
+                    <li>钻机：16辆</li>
                 </ul>
+                </div>
             </div>
-            <div class="infoBox">
+            <div class="scroll-container">
                 <h2>告警列表</h2>
-                <ul>
-                    <li><span class="alert">子系统异常</span> | 2022-03 | <span class="status processing">处理中</span></li>
-                    <li><span class="alert">挖矿停机</span> | 2022-05 | <span class="status resolved">已解决</span></li>
-                </ul>
+                <div class="table-scroll-area">
+                    <table class="alarm-table">
+                        <tbody>
+                            <tr>
+                                <td>算法识别</td>
+                                <td>超载</td>
+                                <td>2024-11-23 12:20:39</td>
+                                <td>王富贵</td>
+                                <td>处理中</td>
+                            </tr>
+                            <tr>
+                                <td>子系统</td>
+                                <td>皮带超重</td>
+                                <td>2024-11-23 13:11:26</td>
+                                <td>钟建国</td>
+                                <td>已处理</td>
+                            </tr>
+                            <tr>
+                                <td>算法识别</td>
+                                <td>非法车辆</td>
+                                <td>2024-11-23 15:47:20</td>
+                                <td>王义</td>
+                                <td>待处理</td>
+                            </tr>
+                            <tr>
+                                <td>算法识别</td>
+                                <td>非法人员</td>
+                                <td>2024-11-23 16:02:37</td>
+                                <td>王伟</td>
+                                <td>处理中</td>
+                            </tr>
+                            <!-- 复制一份内容 -->
+                            <tr>
+                                <td>算法识别</td>
+                                <td>超载</td>
+                                <td>2024-11-23 12:20:39</td>
+                                <td>王富贵</td>
+                                <td>处理中</td>
+                            </tr>
+                            <tr>
+                                <td>子系统</td>
+                                <td>皮带超重</td>
+                                <td>2024-11-23 13:11:26</td>
+                                <td>钟建国</td>
+                                <td>已处理</td>
+                            </tr>
+                            <tr>
+                                <td>算法识别</td>
+                                <td>非法车辆</td>
+                                <td>2024-11-23 15:47:20</td>
+                                <td>王义</td>
+                                <td>待处理</td>
+                            </tr>
+                            <tr>
+                                <td>算法识别</td>
+                                <td>非法人员</td>
+                                <td>2024-11-23 16:02:37</td>
+                                <td>王伟</td>
+                                <td>处理中</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            
+            
         </div>
 
         <!-- 右侧信息板 -->
@@ -75,15 +159,146 @@
         <!-- 底部工具栏 -->
         <div id="bottomToolbar">
             <ul>
-                <li><img src="/static/images/favicon.png" alt="矿山总览"><span>矿山总览</span></li>
-                <li><img src="/static/images/favicon.png" alt="环境监控"><span>环境监控</span></li>
-                <li><img src="/static/images/favicon.png" alt="生产分析"><span>生产分析</span></li>
-                <li><img src="/static/images/favicon.png" alt="车辆管理"><span>车辆管理</span></li>
-                <li><img src="/static/images/favicon.png" alt="仓储分析"><span>仓储分析</span></li>
-                <li><img src="/static/images/favicon.png" alt="能耗分析"><span>能耗分析</span></li>
+                <button id="overview-btn"><img src="/static/images/favicon.png" alt="矿山总览"><span>矿山总览</span></button>
+                <button id="environment-btn"><img src="/static/images/favicon.png" alt="环境监控"><span>环境监控</span></button>
+                <button id="production-btn"><img src="/static/images/favicon.png" alt="生产分析"><span>生产分析</span></button>
+                <button id="vehicle-btn"><img src="/static/images/favicon.png" alt="车辆管理"><span>车辆管理</span></button>
+                <button id="storage-btn"><img src="/static/images/favicon.png" alt="仓储分析"><span>仓储分析</span></button>
+                <button id="energy-btn"><img src="/static/images/favicon.png" alt="能耗分析"><span>能耗分析</span></button>
             </ul>
         </div>
-        
     </div>
+
+    <div id="popups">
+        <!-- 矿山总览 -->
+        <div id="overview-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>矿山总览</h2>
+                <p>这里是矿山总览的信息。</p>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+
+
+        <!-- 环境监控弹窗 -->
+        <div id="environment-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>环境监控</h2>
+                <div class="table-scroll-area">
+                    <table class="monitor-table">
+                        <tbody>
+                            <tr><td>噪声</td><td>20</td></tr>
+                            <tr><td>空气湿度</td><td>20</td></tr>
+                            <tr><td>空气温度</td><td>20</td></tr>
+                            <tr><td>PM2.5</td><td>20</td></tr>
+                            <tr><td>PM10</td><td>20</td></tr>
+                            <tr><td>TSP</td><td>20</td></tr>
+                            <tr><td>水质PH值</td><td>20</td></tr>
+                            <tr><td>土壤湿度</td><td>20</td></tr>
+                            <tr><td>土壤密度</td><td>20</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+        
+        <!-- 其他弹窗 -->
+        <div id="production-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>生产分析</h2>
+                <p>这里是生产分析的信息。</p>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+        <div id="vehicle-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>车辆管理</h2>
+                <p>这里是车辆管理的信息。</p>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+        <div id="storage-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>仓储分析</h2>
+                <p>这里是仓储分析的信息。</p>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+        <div id="energy-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>能耗分析</h2>
+                <p>这里是能耗分析的信息。</p>
+                <button class="close-popup">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // 初始化 Three.js 场景、摄像机和渲染器
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('3dCanvas'), antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 设置背景颜色（透明背景）
+        renderer.setClearColor(0x000000, 0);
+
+        // 添加光源
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // 环境光
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // 方向光
+        directionalLight.position.set(10, 10, 10);
+        scene.add(directionalLight);
+
+        // 加载 glTF 模型
+        const loader = new THREE.GLTFLoader();
+        loader.load('/static/models/wakuang.glb', function (gltf) {
+            const model = gltf.scene;
+            scene.add(model);
+
+            // 调整模型位置和缩放
+            model.position.set(0, -2, 0);
+            model.scale.set(1, 1, 1);
+
+            // 添加动画
+            if (gltf.animations && gltf.animations.length > 0) {
+                const mixer = new THREE.AnimationMixer(model);
+                gltf.animations.forEach((clip) => {
+                    mixer.clipAction(clip).play();
+                });
+
+                // 动画更新
+                const clock = new THREE.Clock();
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const delta = clock.getDelta();
+                    mixer.update(delta);
+                    renderer.render(scene, camera);
+                }
+                animate();
+            }
+        });
+
+        // 控制摄像机
+        camera.position.set(0, 2, 5);
+
+        // 自适应窗口大小
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 渲染循环
+        function render() {
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+        }
+        render();
+    </script>
 </body>
 </html>

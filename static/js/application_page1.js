@@ -90,83 +90,81 @@ new Chart(productionCtx, {
 // 获取地图容器
 const mapContainer = document.getElementById('map-container');
 
-// 定义分区数据
-const zones = [
-    {
-        id: 'processing-zone',
-        name: '管理区',
-        top: '35%',
-        left: '50%',
-        icon: '/static/images/favicon.png', // 图标路径
-    },
-    {
-        id: 'storage-zone',
-        name: '存储区',
-        top: '35%',
-        left: '25%',
-        icon: '/static/images/favicon.png',
-    },
-    {
-        id: 'exploration-zone',
-        name: '生活区',
-        top: '30%',
-        left: '65%',
-        icon: '/static/images/favicon.png',
-    },
-    {
-        id: 'management-zone',
-        name: '开采区',
-        top: '20%',
-        left: '25%',
-        icon: '/static/images/favicon.png',
-    },
-    {
-        id: 'living-zone',
-        name: '加工区',
-        top: '50%',
-        left: '25%',
-        icon: '/static/images/favicon.png', // 自定义图标
-    },
-];
 
-// 动态添加分区标签
-zones.forEach(zone => {
-    // 创建分区容器
-    const zoneElement = document.createElement('div');
-    zoneElement.classList.add('zone-label');
-    zoneElement.id = zone.id;
-    zoneElement.style.top = zone.top;
-    zoneElement.style.left = zone.left;
 
-    // 创建图标
-    const iconElement = document.createElement('img');
-    iconElement.src = zone.icon;
-    iconElement.alt = zone.name;
 
-    // 创建文字标签
-    const nameElement = document.createElement('span');
-    nameElement.innerText = zone.name;
-
-    // 将图标和文字添加到分区容器
-    zoneElement.appendChild(iconElement);
-    zoneElement.appendChild(nameElement);
-
-    // 将分区容器添加到地图容器
-    mapContainer.appendChild(zoneElement);
+const container = document.querySelector('.scroll-container');
+container.addEventListener('mouseenter', () => {
+    cancelAnimationFrame(scrollStep); // 鼠标悬停时暂停滚动
+});
+container.addEventListener('mouseleave', () => {
+    scrollStep(); // 鼠标移开时恢复滚动
 });
 
-// 分区交互效果
-document.querySelectorAll('.zone-label').forEach(zone => {
-    zone.addEventListener('mouseover', () => {
-        console.log(`鼠标悬停在 ${zone.id}`); // 调试信息
-        zone.style.transform = 'scale(1.1)'; // 放大效果
+
+document.addEventListener('DOMContentLoaded', () => {
+    const popupMap = {
+        'overview-btn': 'overview-popup',
+        'environment-btn': 'environment-popup',
+        'production-btn': 'production-popup',
+        'vehicle-btn': 'vehicle-popup',
+        'storage-btn': 'storage-popup',
+        'energy-btn': 'energy-popup'
+    };
+
+    Object.keys(popupMap).forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        const popup = document.getElementById(popupMap[buttonId]);
+
+        if (button && popup) {
+            button.addEventListener('click', () => {
+                popup.classList.remove('hidden'); // 显示弹窗
+            });
+        }
     });
 
-    zone.addEventListener('mouseout', () => {
-        zone.style.transform = 'scale(1)'; // 恢复原始大小
-    });
-
-    zone.addEventListener('click', () => {
-        alert(`${zone.querySelector('span').innerText} 被点击了！`);
+    const closeButtons = document.querySelectorAll('.close-popup');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const popup = button.closest('.popup');
+            if (popup) {
+                popup.classList.add('hidden'); // 隐藏弹窗
+            }
+        });
     });
 });
+
+
+
+function updateDateTime() {
+    const dateTimeElement = document.getElementById('dateTime');
+    if (dateTimeElement) {
+        const now = new Date();
+
+        // 格式化日期
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始
+        const day = String(now.getDate()).padStart(2, '0');
+
+        // 格式化时间
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        // 获取星期
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+
+        // 拼接完整日期时间
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} | ${weekday}`;
+
+        // 更新页面内容
+        dateTimeElement.textContent = formattedDateTime;
+    }
+}
+
+// 每秒更新一次时间
+setInterval(updateDateTime, 1000);
+
+
+

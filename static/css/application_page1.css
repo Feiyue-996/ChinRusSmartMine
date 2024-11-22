@@ -24,42 +24,6 @@ body, html {
     object-fit: cover; /* 确保背景图适应容器 */
 }
 
-
-/* 分区标签样式 */
-.zone-label {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    transition: transform 0.2s ease; /* 动画效果 */
-}
-
-/* 鼠标悬停放大效果 */
-.zone-label:hover {
-    transform: scale(1.1); /* 放大 10% */
-}
-
-/* 图标样式 */
-.zone-label img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 5px;
-}
-
-/* 分区文字样式 */
-.zone-label span {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-
-
-
 /* 信息板容器 */
 #infoBoards {
     position: absolute;
@@ -101,6 +65,83 @@ body, html {
     gap: 10px;
 }
 
+.status {
+    display: flex; /* 使用弹性布局 */
+    justify-content: space-between; /* 子项之间均匀分布 */
+    gap: 10px; /* 每个状态项之间的间距 */
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center; /* 子元素居中 */
+    text-align: center; /* 文本居中对齐 */
+    font-size: 14px;
+}
+
+.status-label {
+    font-size: 16px; /* 汉字字体大小 */
+    color: white; /* 汉字颜色 */
+    margin-bottom: 5px; /* 与数字之间的间距 */
+}
+
+.status-value {
+    font-size: 18px; /* 数字字体更大 */
+    font-weight: bold; /* 数字加粗 */
+}
+
+.status-value.green {
+    color: #00FF00; /* 正常状态颜色 */
+}
+
+.status-value.red {
+    color: #FF0000; /* 故障状态颜色 */
+}
+
+.status-value.yellow {
+    color: #FFD700; /* 维修状态颜色 */
+}
+
+.table-scroll-area {
+    height: calc(100% - 40px); /* 滚动区域的高度，避开标题 */
+    overflow: hidden; /* 隐藏超出内容 */
+    position: relative;
+}
+
+.alarm-table {
+    width: 100%; /* 表格宽度占满容器 */
+    border-collapse: collapse; /* 去掉单元格之间的间隙 */
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+.alarm-table th, .alarm-table td {
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 表格边框 */
+    padding: 8px; /* 单元格内边距 */
+}
+
+.alarm-table th {
+    background-color: rgba(255, 255, 255, 0.1); /* 表头背景 */
+    font-weight: bold;
+}
+
+.alarm-table tbody {
+    display: block;
+    position: absolute;
+    width: 100%;
+    animation: scroll-table 10s linear infinite; /* 动画 */
+}
+
+@keyframes scroll-table {
+    0% {
+        transform: translateY(0); /* 起始位置 */
+    }
+    100% {
+        transform: translateY(-50%); /* 滚动到一半内容 */
+    }
+}
+
 
 /* 右侧信息板 */
 #rightBoards {
@@ -111,6 +152,51 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.scroll-container {
+    background: rgba(0, 0, 0, 0.5); /* 背景黑色，透明度为 0.5 */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    width: 100%; /* 宽度占满父容器 */
+    height: 200px; /* 将高度从 100px 增大到 200px */
+    overflow: hidden; /* 隐藏超出范围的内容 */
+    position: relative; /* 限制滚动范围 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 可选：添加边框 */
+    background: rgba(0, 0, 0, 0.5); /* 可选：背景色 */
+}
+
+.scroll-area {
+    height: calc(100% - 40px); /* 高度 = 容器高度 - 标题高度 */
+    overflow: hidden; /* 隐藏超出内容 */
+    position: relative;
+}
+
+
+.scroll-content {
+    list-style: none; /* 移除默认列表样式 */
+    padding: 0;
+    margin: 0;
+    position: absolute; /* 绝对定位以便动画 */
+    animation: scroll-animation 10s linear infinite; /* 动画循环滚动 */
+}
+
+.scroll-content li {
+    font-size: 16px; /* 字体大小 */
+    color: white; /* 字体颜色 */
+    padding: 5px 10px; /* 内边距 */
+    text-align: center; /* 文本居中 */
+}
+
+/* 无缝滚动动画 */
+@keyframes scroll-animation {
+    0% {
+        transform: translateY(0); /* 起始位置 */
+    }
+    100% {
+        transform: translateY(-50%); /* 滚动一个完整的内容高度 */
+    }
 }
 
 /* 右侧信息板中的表格样式 */
@@ -246,6 +332,95 @@ canvas {
     font-size: 12px;
     color: #FFA500; /* 保持底部工具栏文字颜色为橙色 */
 }
+
+
+
+/* 弹窗背景 */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.21); /* 半透明背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 弹窗内容 */
+.popup-content {
+    position: relative; /* 弹窗内容相对定位 */
+    background: rgba(19, 18, 18, 0.349); /* 内容背景 */
+    width: 50%;
+    max-height: 70%;
+    padding: 20px;
+    border-radius: 10px; /* 圆角 */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* 纵向布局 */
+    align-items: center; /* 子元素水平居中 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+    z-index: 10000; /* 进一步确保弹窗内容在背景上方 */
+}
+
+/* 隐藏弹窗 */
+.hidden {
+    display: none;
+}
+
+/* 表格样式 */
+.monitor-table {
+    width: 80%; /* 表格占弹窗宽度的 80% */
+    border-collapse: collapse; /* 去掉单元格之间的间隙 */
+    margin-top: 20px; /* 与标题的间距 */
+    text-align: center;
+}
+
+.monitor-table th, .monitor-table td {
+    border: 1px solid #ddd; /* 单元格边框 */
+    padding: 8px; /* 内边距 */
+    text-align: center; /* 文字水平居中 */
+    vertical-align: middle; /* 文字垂直居中 */
+}
+
+
+/* 滚动区域 */
+.table-scroll-area {
+    height: 200px; /* 可视高度 */
+    overflow: hidden; /* 隐藏超出内容 */
+    position: relative;
+    margin: 0 auto; /* 表格居中 */
+}
+
+.monitor-table tbody {
+    display: block;
+    animation: scroll-table 10s linear infinite; /* 滚动动画 */
+}
+
+
+/* 滚动动画 */
+@keyframes scroll-table {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* 关闭按钮 */
+.close-popup {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #f44336ca;
+    color: rgba(255, 255, 255, 0.344);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 
 
