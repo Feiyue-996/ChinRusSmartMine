@@ -141,30 +141,30 @@ function updateDateTime() {
     if (dateTimeElement) {
         const now = new Date();
 
-        // 格式化日期
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始
+        // 获取日、月、年
         const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始
+        const year = now.getFullYear();
+
+        // 获取星期几
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayOfWeek = daysOfWeek[now.getDay()];
 
         // 格式化时间
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
 
-        // 获取星期
-        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-        const weekday = weekdays[now.getDay()];
-
-        // 拼接完整日期时间
-        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} | ${weekday}`;
-
-        // 更新页面内容
+        // 更新日期时间格式
+        const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds} | ${dayOfWeek}`;
         dateTimeElement.textContent = formattedDateTime;
     }
 }
 
 // 每秒更新一次时间
 setInterval(updateDateTime, 1000);
+updateDateTime(); // 页面加载时立即调用
+
 
 
 

@@ -1,1 +1,2 @@
 *.glb filter=lfs diff=lfs merge=lfs -text
+wakuang.glb filter=lfs diff=lfs merge=lfs -text

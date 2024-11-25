@@ -24,4 +24,5 @@ def application_page2(request):
 def application_page3(request):
     return render(request, 'en/applications/application_page3.html', {'current_page': 'page3'})
 
-
+def application_page4(request):
+    return render(request, 'en/applications/application_page4.html', {'current_page': 'page4'})
