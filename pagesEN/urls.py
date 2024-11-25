@@ -19,4 +19,7 @@ urlpatterns = [
 	# 新的路由规则
     path('applications/application_page1.html/', views.application_page1, name='application_page1'),
     path('applications/application_page2.html/', views.application_page2, name='application_page2'),
+    path('applications/application_page3.html/', views.application_page3, name='application_page3'),
+    path('applications/application_page4.html/', views.application_page4, name='application_page4'),
+
 ]

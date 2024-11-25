@@ -109,7 +109,7 @@ body, html {
 }
 
 .alarm-table {
-    width: 100%; /* 表格宽度占满容器 */
+    width: auto; /* 根据内容调整表格宽度 */
     border-collapse: collapse; /* 去掉单元格之间的间隙 */
     color: white;
     font-size: 14px;

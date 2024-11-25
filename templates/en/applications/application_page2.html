@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLB Animation Viewer</title>
+    <title>Technology and equipment</title>
     <style>
         body {
             margin: 0;
@@ -22,8 +22,6 @@
         // 创建场景
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 2, 5);
-
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
@@ -39,28 +37,49 @@
         // 控制器
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-        // 加载 glb 文件
-        const loader = new THREE.GLTFLoader();
-        loader.load('/static/models/wakuang.glb', (gltf) => {
+        // 加载 GLB 文件
+        const gltfLoader = new THREE.GLTFLoader();
+        gltfLoader.load('/static/models/wakuang.glb', (gltf) => {
             const model = gltf.scene;
+
+
+            // 动态计算模型的边界框
+            const box = new THREE.Box3().setFromObject(model);
+            const size = new THREE.Vector3();
+            box.getSize(size);
+
+            // 调整模型到场景中心
+            const center = new THREE.Vector3();
+            box.getCenter(center);
+            model.position.sub(center); // 将模型中心移动到场景原点
             scene.add(model);
 
-            // 播放动画
+            // 根据模型尺寸调整摄像机位置
+            const maxDimension = Math.max(size.x, size.y, size.z);
+            const cameraDistance = maxDimension * 2; // 距离倍数可调整
+            camera.position.set(0, maxDimension / 2, cameraDistance);
+            controls.target.set(0, 0, 0); // 确保 OrbitControls 的目标是模型中心
+
+            // 如果模型包含动画
             const mixer = new THREE.AnimationMixer(model);
-            gltf.animations.forEach((clip) => {
-                mixer.clipAction(clip).play();
-            });
+            if (gltf.animations.length > 0) {
+                gltf.animations.forEach((clip) => {
+                    mixer.clipAction(clip).play();
+                });
+            }
 
             // 动画更新
             const clock = new THREE.Clock();
             function animate() {
                 requestAnimationFrame(animate);
                 const delta = clock.getDelta();
-                mixer.update(delta);
+                if (mixer) mixer.update(delta);
                 controls.update();
                 renderer.render(scene, camera);
             }
             animate();
+        }, undefined, (error) => {
+            console.error('Error loading GLB file:', error);
         });
 
         // 自适应窗口大小
