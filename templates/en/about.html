@@ -25,6 +25,20 @@
     <!-- Main Stylesheet -->
     <link href="{% static 'assets/style.css' %}" rel="stylesheet" media="screen" />
 
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        
+        video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        </style>
+
         <!-- JavaScript for handling click events -->
         <script>
           function displayContent(contentId) {
@@ -110,7 +124,7 @@
                       <a href="#" onclick="displayContent('Professors-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Professors</a>
                   </li>
                   <li style="margin-bottom: 20px; font-size: 1.5em;">
-                      <a href="#" onclick="displayContent('Members-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Members</a>
+                      <a href="#" onclick="displayContent('Members-content')" style="text-decoration: none; color: #00796B; font-weight: bold;transition: background-color 0.3s ease;">Developer Introduction</a>
                   </li>
               </ul>
           </nav>
@@ -119,25 +133,24 @@
       <!-- Right content block -->
     <div style="flex-grow: 1; padding: 20px; background-color:rgba(12, 12, 12, 0.718); width: calc(100% - 300px); overflow-y: auto; max-height: 100%;">
             <!-- Dynamic content section -->
-         <div id="dynamic-content" style="flex-grow: 1;transition: height 0.3s ease;overflow: auto;">
+        <div id="dynamic-content" style="flex-grow: 1;transition: height 0.3s ease;overflow: auto;">
                 <h1 style="text-align: center;margin: 50px;color: bisque;">项目组介绍</h1>
                 <h1 style="text-align: center;margin: 50px;color: bisque;">Project Team Introduction</h1>
-                <p style="text-align: center;">
-                  <img src="/static/images/team.jpg" alt="" style="width: 1000px;height: auto;">
-                </p>
-         </div>
+                <p style="text-align: center;"></p>
+                <div class="container">
+                    <video controls preload="auto" style="text-align:center;">
+                        <source src="/static/videos/introduce_all.mp4" type="video/mp4">
+                    </video>
+                </div>
+        </div>
 
           <!-- Hidden content blocks -->
 
           <div id="Company-Profile-content" style="display: none; color: white;">
-            <img src="/static/images/logo.png" alt="">
             <h1 style="text-align: center;margin: 50px;color: bisque;">公司介绍</h1>
             <h1 style="text-align: center;margin: 50px;color: bisque;"> Company Profile</h1>
             <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
-                Hangzhou JIE Drive Technology Co., Ltd, specialized JIE. From worm gear reducer, gear reducer, tower crane to intelligent transmission solution provider, JIE is a national high-tech enterprise, with JIE Intelligent Transmission Research Institute, national postdoctoral research station, national accredited speed reducer laboratory, Peking University JIE Intelligent Transmission Joint Laboratory, Xidian JIE Future Transmission Joint Laboratory, China Mechanical Industry Speed Reducer Engineering Research Center and Enterprise Technology Center and other innovation platforms. JIE has built an industrial alliance and realized sustainable operation through the growth planning and innovation DNA plan.
-                Intelligent JIE. From intelligent factory, intelligent products, intelligent service, intelligent experience to intelligent talents, intelligent transmission solutions such as reducer+motor+inverter+sensor+Internet of Things (IOT), and intelligent digital technologies such as execution layer+acquisition layer+driver layer+control layer+data layer, JIE is based on the overall planning of the “future factory” for lean production of the whole value chain, and the overall planning for the whole process of “future factory”. Based on the overall planning of “Future Factory” for lean production in the whole value chain and the project implementation of ecosystem, multi-system data center and integrated industrial brain, JIE realizes the intelligent manufacturing journey of an intelligent gear motor.
-                Globalized JIE brand. From Hangzhou brand, Chinese brand to world brand, JIE is based on Chinese market, exported to European and American market, and serves the global market. Through the construction of U.S. assembly plant and global marketing network, JIE is committed to localized service, face-to-face service and one-to-one service in the global market, and JIE has made good products for the global good customers!
-                JIE is a good product for global good customers! JIE people adhere to the “specialization, intelligence, globalization” development plan, committed to JIE intelligent transmission “Research Institute + Science and Technology Innovation Center + Future Factory” innovation model, to create a high ground of talent, build industrial ecology, positioning specialization, specialization and new. JIE intelligent transmission solution provider!
+                
             </p>
             
           </div>
@@ -173,11 +186,18 @@
           </div>
           
           <div id="Members-content" style="display: none; color: white;">
-            <h1 style="text-align: center;margin: 50px;color: bisque;">成员介绍</h1>
-            <h1 style="text-align: center;margin: 50px;color: bisque;">Members</h1>
-            <p class="text-white mb-4" style="text-align: left ;margin-left: 200px;margin-right: 200px;font-size: 20px;line-height: 35px;">
-                <img src="/static/images/team.jpg" alt="">
+            <h1 style="text-align: center;margin: 50px;color: bisque;">开发人员介绍</h1>
+            <h1 style="text-align: center;margin: 50px;color: bisque;">Developer Introduction</h1>
+            <p class="text-white mb-4">
+                <img src="/static/images/team.jpg" alt="" style="width: 1000px; height: auto;">
             </p> 
+
+            <div class="Developer_Introduction">
+                <p>
+                    这里是开发人员介绍
+                    Developer Introduction，waiting for update...
+                </p>
+            </div>
           </div>
           
 
@@ -190,43 +210,20 @@
 
         <div class="container">
             <div class="row">
-              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
-                <!-- about -->
-                <br>
-              </div>
-              <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
-                <ul class="list-unstyled text-white-50">
-                </div>
-              </div>
-            </div>
-          </div>
-    
-        <div class="container">
-            <div class="row">
                 <!-- Left Section: 联系我们 -->
                 <div class="col-lg-6 col-sm-12 mb-4">
-                    <br>
                     <img src="{% static 'images/crsm.png' %}" style="width: 50% !important; height: auto !important;">
-                    <br>
+                    <br><br>
                     <h5 class="text-white">Contact Us</h5>
                     <ul class="list-unstyled text-white-50">
-                        <li>Phone number：<span class="text-white">+7 (812) 328-9030</span></li>
-                        <li>Address：<span class="text-white">Russia, 195251, St.Petersburg, Polytechnicheskaya, 29 B</span></li>
+                        <li>Telegram：<span class="text-white">YuriyNurgalievich</span></li>
+                        <li>Wechat：<span class="text-white">wxid_ydfv6stt0n1c22</span></li>
                         <li>Email：<span class="text-white">Kozhubaev_yun@spbstu.ru</span></li>
                     </ul>
                 </div>
                 <!-- Right Section: 法律声明, 隐私政策, 免责声明 -->
-                <div class="col-lg-6 col-sm-12 mb-4 text-right">
+                <div class="col-lg-6 col-sm-12 mb-4 text-right d-flex flex-column justify-content-end">
                     <ul class="list-unstyled text-white-50">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                         <li><a href="#" class="text-white-50">Legal Notices</a></li>
                         <li><a href="#" class="text-white-50">Privacy Policy</a></li>
                         <li><a href="#" class="text-white-50">Disclaimer</a></li>
