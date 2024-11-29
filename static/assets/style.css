@@ -2248,3 +2248,17 @@ button:focus {
     height:auto;
     display:block
 }
+
+/*about中的文字*/
+#Developer_Introduction h3,
+#Developer_Introduction h4
+{
+    color: white;
+    margin: 40px;
+}
+
+#Developer_Introduction p
+{
+    color: white;
+    margin: 15px;
+}

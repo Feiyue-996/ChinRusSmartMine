@@ -1,3 +1,12 @@
 *.glb filter=lfs diff=lfs merge=lfs -text
 wakuang.glb filter=lfs diff=lfs merge=lfs -text
 introduce_all.mp4 filter=lfs diff=lfs merge=lfs -text
+
+
+# 强制所有文本文件使用 LF 作为行尾符
+* text=auto eol=lf
+
+# Windows 执行文件保持 CRLF
+*.bat eol=crlf
+*.cmd eol=crlf
+

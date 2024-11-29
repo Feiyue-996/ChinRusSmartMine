@@ -26,3 +26,9 @@ def application_page3(request):
 
 def application_page4(request):
     return render(request, 'en/applications/application_page4.html', {'current_page': 'page4'})
+
+def mine_map(request):
+    return render(request, 'applications/mine_map.html')
+
+
+

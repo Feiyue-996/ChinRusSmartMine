@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.dashboard {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 15px;
+    width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.info-section, .status-section, .personnel-section, .production-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #444;
+    border-radius: 10px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.status-section .status-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status-section .status-item span {
+    width: 50px;
+}
+
+.status-bar {
+    height: 20px;
+    background-color: #666;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.status-bar.normal {
+    background-color: #4caf50; /* Green */
+}
+
+.status-bar.fault {
+    background-color: #f44336; /* Red */
+}
+
+.status-bar.maintenance {
+    background-color: #ff9800; /* Orange */
+}
+
+.personnel-section .personnel-info,
+.vehicle-info {
+    margin-bottom: 10px;
+}
+
+.personnel-info span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.vehicle-info div {
+    margin-bottom: 5px;
+}
+
+.production-section .production-progress {
+    margin-top: 10px;
+}
+
+.production-section .progress-bar {
+    background-color: #555;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+.production-section .progress {
+    background-color: #4caf50;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.production-section .progress-bar span {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    line-height: 20px;
+    font-weight: bold;
+    color: #fff;
+}

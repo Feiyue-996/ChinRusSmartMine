@@ -21,5 +21,9 @@ urlpatterns = [
     path('applications/application_page2.html/', views.application_page2, name='application_page2'),
     path('applications/application_page3.html/', views.application_page3, name='application_page3'),
     path('applications/application_page4.html/', views.application_page4, name='application_page4'),
+    
+	path('applications/mine_map.html/', views.mine_map, name='mine_map'),
+
+
 
 ]
